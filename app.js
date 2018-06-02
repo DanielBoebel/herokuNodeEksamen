@@ -281,7 +281,7 @@ app.post("/logged-in", function(req, res) {
 
 
 
-server.listen(3000, function(err){
+server.listen(process.env.PORT || 3000, function(err){
     if(err){
         console.log("There was an error running on port "+server.address().port);
     }
