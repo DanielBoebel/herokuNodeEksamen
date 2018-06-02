@@ -5,6 +5,10 @@ var timestamp = require('time-stamp');
 var moment = require('moment')
 var swal = require('sweetalert2')
 
+//ports
+var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
 //Hashing password package
 var bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -281,10 +285,6 @@ app.post("/logged-in", function(req, res) {
 
 
 
-server.listen(process.env.PORT || 5000, function(err){
-    if(err){
-        console.log("There was an error running on port "+server.address().port);
-    }
-    console.log("Server is running on port ", server.address().port);
-
-})
+    server.listen(server_port, server_host, function() {
+        console.log('Listening on port %d', server_port);
+    });
